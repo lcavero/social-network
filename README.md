@@ -5,7 +5,7 @@ A project based on DDD, CQRS, and HA made with [Symfony](https://symfony.com) we
 Created from [Symfony Docker](https://github.com/dunglas/symfony-docker) project as starting point.
 
 
-## Getting Started
+## Build project
 
 1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/) (v2.10+)
 2. Run `docker compose build --pull --no-cache` to build fresh images
