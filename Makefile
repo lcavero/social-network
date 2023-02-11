@@ -61,7 +61,7 @@ cc: sf
 
 ## —— Tests 🔥 ———————————————————————————————————————————————————————————————
 run-tests: ## Run tests
-	@$(PHP_CONT) php bin/phpunit
+	@$(PHP_CONT_NO_TTY) php bin/phpunit
 
 phpstan: ## Run PhpStan
 	@$(PHP_CONT_NO_TTY) vendor/phpstan/phpstan/phpstan analyse src tests --level max
