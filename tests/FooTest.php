@@ -9,6 +9,6 @@ class FooTest extends TestCase
 
     public function testFoo(): void
     {
-        self::assertSame(1, 1);
+        self::assertSame(2, 1);
     }
 }
