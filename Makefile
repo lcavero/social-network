@@ -3,6 +3,7 @@ DOCKER_COMP = docker compose
 
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php
+PHP_CONT_TTY = $(DOCKER_COMP) exec -T php
 
 # Executables
 PHP      = $(PHP_CONT) php
@@ -24,7 +25,10 @@ build: ## Builds the Docker images
 up: ## Start the docker hub in detached mode (no logs)
 	@$(DOCKER_COMP) up --detach
 
-start: build up ## Build and start the containers
+hooks: ## Install git hooks
+	sh scripts/install-hooks.sh
+
+start: hooks build up ## Build and start the containers
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans
@@ -58,3 +62,6 @@ cc: sf
 ## —— Tests 🔥 ———————————————————————————————————————————————————————————————
 run-tests: ## Run tests
 	@$(PHP_CONT) php bin/phpunit
+
+phpstan: ## Run PhpStan
+	@$(PHP_CONT_TTY) vendor/phpstan/phpstan/phpstan analyse src tests --level max
