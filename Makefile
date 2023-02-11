@@ -3,7 +3,7 @@ DOCKER_COMP = docker compose
 
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php
-PHP_CONT_TTY = $(DOCKER_COMP) exec -T php
+PHP_CONT_NO_TTY = $(DOCKER_COMP) exec -T php
 
 # Executables
 PHP      = $(PHP_CONT) php
@@ -64,4 +64,4 @@ run-tests: ## Run tests
 	@$(PHP_CONT) php bin/phpunit
 
 phpstan: ## Run PhpStan
-	@$(PHP_CONT_TTY) vendor/phpstan/phpstan/phpstan analyse src tests --level max
+	@$(PHP_CONT_NO_TTY) vendor/phpstan/phpstan/phpstan analyse src tests --level max
