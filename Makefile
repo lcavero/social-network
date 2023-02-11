@@ -35,6 +35,8 @@ logs: ## Show live logs
 sh: ## Connect to the PHP FPM container
 	@$(PHP_CONT) sh
 
+clean: ## Normalize generated files permissions
+	@$(DOCKER_COMP) run --rm php chown -R $$(id -u):$$(id -g) .
 
 ## —— Composer 🧙 ——————————————————————————————————————————————————————————————
 composer: ## Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
