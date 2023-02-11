@@ -28,7 +28,7 @@ up: ## Start the docker hub in detached mode (no logs)
 hooks: ## Install git hooks
 	sh scripts/install-hooks.sh
 
-start: hooks build up ## Build and start the containers
+start: build up ## Build and start the containers
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans
