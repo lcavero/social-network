@@ -25,4 +25,4 @@ jobs:
           done
           exit 1
       - name: Execute tests
-        uses: php-actions/phpunit@v3
+        run: make run-tests
