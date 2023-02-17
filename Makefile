@@ -64,4 +64,4 @@ run-tests: ## Run tests
 	@$(PHP_CONT_NO_TTY) php bin/phpunit
 
 phpstan: ## Run PhpStan
-	@$(PHP_CONT_NO_TTY) vendor/phpstan/phpstan/phpstan analyse src tests --level max
+	@$(PHP_CONT_NO_TTY) vendor/phpstan/phpstan/phpstan analyse -c develop/phpstan.neon

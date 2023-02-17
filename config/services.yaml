@@ -6,6 +6,10 @@
 parameters:
 
 services:
+    _instanceof:
+        App\Shared\Infrastructure\EntryPoint\Api\Controller\ControllerInterface:
+            tags: ['controller.service_arguments']
+            
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -16,8 +20,6 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed

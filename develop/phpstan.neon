@@ -1,0 +1,7 @@
+parameters:
+	level: max
+	paths:
+		- ../src
+		- ../tests
+	ignoreErrors:
+	    - '#^Method [a-zA-Z0-9\\_:()]+ has parameter \$[a-zA-Z0-9\\_]+ with no value type specified in iterable type array\.$#'

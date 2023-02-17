@@ -1,0 +1,4 @@
+create_story:
+    path: /
+    controller: App\Network\Story\Infrastructure\EntryPoint\Api\CreateStoryApiAction
+    methods: [POST]

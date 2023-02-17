@@ -1,0 +1,4 @@
+stories:
+    resource: story.yaml
+    prefix: '/stories'
+    name_prefix: 'stories_'

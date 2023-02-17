@@ -1,0 +1,4 @@
+network:
+    resource: network/network.yaml
+    prefix: '/network'
+    name_prefix: 'network_'
