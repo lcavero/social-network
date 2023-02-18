@@ -5,8 +5,9 @@ namespace App\Network\Story\Infrastructure\EntryPoint\Api;
 use App\Network\Story\Application\FindStory\FindStoryQuery;
 use App\Network\Story\Application\FindStory\FindStoryResult;
 use App\Shared\Domain\Bus\Query\QueryBusInterface;
-use App\Shared\Infrastructure\EntryPoint\Api\Controller\ApiController;
-use App\Shared\Infrastructure\EntryPoint\Api\Controller\ControllerInterface;
+use App\Shared\Domain\VO\Uuid\InvalidUuidException;
+use App\Shared\Infrastructure\EntryPoint\Controller\ApiController;
+use App\Shared\Infrastructure\EntryPoint\Controller\ControllerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 final readonly class FindStoryApiAction implements ControllerInterface

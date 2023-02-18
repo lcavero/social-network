@@ -7,7 +7,7 @@ parameters:
 
 services:
     _instanceof:
-        App\Shared\Infrastructure\EntryPoint\Api\Controller\ControllerInterface:
+        App\Shared\Infrastructure\EntryPoint\Controller\ControllerInterface:
             tags: ['controller.service_arguments']
             
         App\Shared\Domain\Bus\Command\CommandHandlerInterface:
