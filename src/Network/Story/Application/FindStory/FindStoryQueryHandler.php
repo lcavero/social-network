@@ -6,8 +6,11 @@ use App\Shared\Domain\Bus\Query\QueryHandlerInterface;
 
 final readonly class FindStoryQueryHandler implements QueryHandlerInterface
 {
-    public function __invoke(FindStoryQuery $query): string
+    public function __invoke(FindStoryQuery $query): FindStoryResult
     {
-        return 'eeey';
+        return FindStoryResult::fromArray([
+            'title' => 'dummyTitle',
+            'description' => 'dummyDescription'
+        ]);
     }
 }
