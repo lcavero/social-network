@@ -16,7 +16,7 @@ final readonly class CreateStoryApiAction implements ControllerInterface
 
     public function __invoke(): JsonResponse
     {
-        $this->bus->dispatch(CreateStoryCommand::create('hola', 'adios'));
+        $this->bus->dispatchAsync(CreateStoryCommand::create('hola', 'adios'));
         return $this->apiController->json('ok', 201);
     }
 }
