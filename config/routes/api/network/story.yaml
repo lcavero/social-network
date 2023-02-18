@@ -2,3 +2,8 @@ create_story:
     path: /
     controller: App\Network\Story\Infrastructure\EntryPoint\Api\CreateStoryApiAction
     methods: [POST]
+
+find_story:
+    path: /
+    controller: App\Network\Story\Infrastructure\EntryPoint\Api\FindStoryApiAction
+    methods: [GET]

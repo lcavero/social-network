@@ -10,6 +10,12 @@ services:
         App\Shared\Infrastructure\EntryPoint\Api\Controller\ControllerInterface:
             tags: ['controller.service_arguments']
             
+        App\Shared\Domain\Bus\Command\CommandHandlerInterface:
+            tags: [messenger.message_handler]
+            
+        App\Shared\Domain\Bus\Query\QueryHandlerInterface:
+            tags: [ messenger.message_handler ]
+            
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
