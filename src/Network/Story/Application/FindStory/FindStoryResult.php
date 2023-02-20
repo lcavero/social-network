@@ -15,4 +15,12 @@ final readonly class FindStoryResult
             $data['description']
         );
     }
+
+    public function render(): array
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description
+        ];
+    }
 }

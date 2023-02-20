@@ -8,6 +8,5 @@ final readonly class CreateStoryCommandHandler implements CommandHandlerInterfac
 {
     public function __invoke(CreateStoryCommand $command): void
     {
-        var_dump('HOLAAAA');
     }
 }
