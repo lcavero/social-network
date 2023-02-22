@@ -16,6 +16,6 @@
 ###< symfony/phpunit-bridge ###
 
 ###> friendsofphp/php-cs-fixer ###
-/.php-cs-fixer.dist.php
+/develop/.php-cs-fixer.dist.php
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###

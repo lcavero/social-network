@@ -8,6 +8,6 @@ final class InvalidUuidException extends DomainException
 {
     public static function fromValue(string $value): self
     {
-        return self::create(sprintf('Received value %s is not a valid Uuid.', $value));
+        return self::create(sprintf('The value "%s" is not a valid Uuid.', $value));
     }
 }
