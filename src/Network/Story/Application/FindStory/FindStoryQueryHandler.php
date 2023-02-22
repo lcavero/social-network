@@ -3,7 +3,6 @@
 namespace App\Network\Story\Application\FindStory;
 
 use App\Shared\Domain\Bus\Query\QueryHandlerInterface;
-use App\Shared\Domain\VO\Uuid\Uuid2;
 
 final readonly class FindStoryQueryHandler implements QueryHandlerInterface
 {
