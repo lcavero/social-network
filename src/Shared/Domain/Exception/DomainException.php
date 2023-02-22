@@ -2,9 +2,10 @@
 
 namespace App\Shared\Domain\Exception;
 
+use Exception;
 use Throwable;
 
-class DomainException extends \Exception
+class DomainException extends Exception
 {
     private final function __construct(string $message = '', int $code = 0, ?Throwable $previous = null)
     {
