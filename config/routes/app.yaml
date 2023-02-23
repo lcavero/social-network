@@ -1,4 +1,4 @@
 api:
-    resource: api/api.yaml
+    resource: ../../src/Shared/Infrastructure/EntryPoint/Http/Routing/Api/api.yaml
     prefix: '/api'
     name_prefix: 'api_'

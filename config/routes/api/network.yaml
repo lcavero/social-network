@@ -1,4 +1,0 @@
-stories:
-    resource: ../../../src/Network/Story/Infrastructure/EntryPoint/Api/routes.yaml
-    prefix: '/stories'
-    name_prefix: 'stories_'
