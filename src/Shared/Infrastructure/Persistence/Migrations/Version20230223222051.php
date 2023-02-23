@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DoctrineMigrations;
+namespace App\Shared\Infrastructure\Persistence\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
@@ -10,11 +10,11 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230223005903 extends AbstractMigration
+final class Version20230223222051 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Create network_story table';
+        return 'Create table network_story';
     }
 
     public function up(Schema $schema): void
