@@ -14,7 +14,7 @@ final class Version20230223005903 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Create network_story table';
     }
 
     public function up(Schema $schema): void
