@@ -31,7 +31,9 @@ abstract class AbstractRequestValidator
     public function validate(Request $request): ConstraintViolationListInterface
     {
         $errors = $this->validator->validate($request->query->all(), $this->queryConstraints());
-        $errors->addAll($this->validator->validate($request->request->all(), $this->requestConstraints()));
+        if ('' !== $request->getContent()) {
+            $errors->addAll($this->validator->validate($request->toArray(), $this->requestConstraints()));
+        }
         $errors->addAll($this->validator->validate($request->attributes->get('_route_params'), $this->routeParamConstraints()));
         return $errors;
     }

@@ -1,16 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace App\Network\Story\Application\FindStory;
+namespace App\Network\Story\Application\FindStoryById;
 
-final readonly class FindStoryResult
+final readonly class FindStoryByIdResult
 {
-    private function __construct(public string $title, public string $description)
+    private function __construct(public string $id, public string $title, public string $description)
     {
     }
 
     public static function fromArray(array $data): self
     {
         return new self(
+            $data['id'],
             $data['title'],
             $data['description']
         );
@@ -19,6 +20,7 @@ final readonly class FindStoryResult
     public function render(): array
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description
         ];

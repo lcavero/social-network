@@ -39,6 +39,8 @@ final readonly class ApiExceptionListener
 
             $content['exception'] = get_class($exception);
             $content['exceptionMessage'] = $exception->getMessage();
+            $content['exceptionFile'] = $exception->getFile();
+            $content['exceptionLine'] = $exception->getLine();
             $content['trace'] = $exception->getTrace();
 
             $content = json_encode($content, $response->getEncodingOptions());

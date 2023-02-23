@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+
+    <entity name="App\Network\Story\Domain\Story" table="network_story">
+
+        <id name="id" type="uuid" column="uuid">
+            <generator strategy="NONE"/>
+        </id>
+
+        <embedded name="title" class="App\Network\Story\Domain\StoryTitle" use-column-prefix="false" />
+        <embedded name="description" class="App\Network\Story\Domain\StoryDescription" use-column-prefix="false" />
+
+    </entity>
+</doctrine-mapping>

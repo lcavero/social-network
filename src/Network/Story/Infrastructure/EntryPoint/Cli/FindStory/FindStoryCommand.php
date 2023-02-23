@@ -2,7 +2,7 @@
 
 namespace App\Network\Story\Infrastructure\EntryPoint\Cli\FindStory;
 
-use App\Network\Story\Application\FindStory\FindStoryQuery;
+use App\Network\Story\Application\FindStoryById\FindStoryByIdQuery;
 use App\Shared\Domain\Bus\Query\QueryBusInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,7 +25,7 @@ final class FindStoryCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $result = $this->bus->handle(FindStoryQuery::create('12344'));
+        $result = $this->bus->handle(FindStoryByIdQuery::create('12344'));
         var_dump($result);
         // ... put here the code to create the user
 

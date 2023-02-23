@@ -6,11 +6,12 @@ use App\Shared\Domain\Bus\Command\CommandInterface;
 
 final readonly class CreateStoryCommand implements CommandInterface
 {
-    private function __construct(public string $title, public string $description)
-    {}
-
-    public static function create(string $title, string $description): self
+    private function __construct(public string $id, public string $title, public string $description)
     {
-        return new self($title, $description);
+    }
+
+    public static function create(string $id, string $title, string $description): self
+    {
+        return new self($id, $title, $description);
     }
 }

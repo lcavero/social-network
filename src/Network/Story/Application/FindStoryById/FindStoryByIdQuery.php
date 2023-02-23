@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace App\Network\Story\Application\FindStory;
+namespace App\Network\Story\Application\FindStoryById;
 
 use App\Shared\Domain\Bus\Query\QueryInterface;
 
-final readonly class FindStoryQuery implements QueryInterface
+final readonly class FindStoryByIdQuery implements QueryInterface
 {
     private function __construct(public string $id)
     {
