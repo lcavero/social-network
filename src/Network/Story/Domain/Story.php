@@ -2,7 +2,7 @@
 
 namespace App\Network\Story\Domain;
 
-readonly class Story
+class Story
 {
     private string $id;
 
