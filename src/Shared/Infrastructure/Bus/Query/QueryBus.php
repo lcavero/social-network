@@ -4,6 +4,7 @@ namespace App\Shared\Infrastructure\Bus\Query;
 
 use App\Shared\Domain\Bus\Query\QueryBusInterface;
 use App\Shared\Domain\Bus\Query\QueryInterface;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 
@@ -20,6 +21,15 @@ final class QueryBus implements QueryBusInterface
 
     public function handle(QueryInterface $query): mixed
     {
-        return $this->handleQuery($query);
+        try {
+            return $this->handleQuery($query);
+        } catch (HandlerFailedException $e) {
+            while ($e instanceof HandlerFailedException) {
+                if (null !== $e->getPrevious()) {
+                    $e = $e->getPrevious();
+                }
+            }
+            throw $e;
+        }
     }
 }

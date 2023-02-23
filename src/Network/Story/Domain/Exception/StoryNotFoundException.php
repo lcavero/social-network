@@ -7,8 +7,13 @@ use App\Shared\Domain\Exception\DomainException;
 
 final class StoryNotFoundException extends DomainException
 {
-    public static function fromId(StoryId $storyId): self
+    public static function fromStoryId(StoryId $storyId): self
     {
         return new self(sprintf('Story with id %s was not found', $storyId->value));
+    }
+
+    public static function fromId(string $id): self
+    {
+        return new self(sprintf('Story with id %s was not found', $id));
     }
 }

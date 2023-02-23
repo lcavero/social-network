@@ -23,6 +23,10 @@ final readonly class ApiExceptionListener
 
         $exception = $event->getThrowable();
 
+        if ($this->debug && !$exception instanceof HttpExceptionInterface) {
+            return;
+        }
+
         if ($exception instanceof BadRequestHttpException) {
             $response = ApiErrorResponse::fromBadRequestHttpException($exception);
         } else if ($exception instanceof HttpExceptionInterface) {
@@ -30,24 +34,6 @@ final readonly class ApiExceptionListener
         } else {
             $response = ApiErrorResponse::create();
         }
-
-        if ($this->debug) {
-            $content = $response->getContent();
-            assert(false !== $content);
-            $content = json_decode($content, true);
-            assert(is_array($content));
-
-            $content['exception'] = get_class($exception);
-            $content['exceptionMessage'] = $exception->getMessage();
-            $content['exceptionFile'] = $exception->getFile();
-            $content['exceptionLine'] = $exception->getLine();
-            $content['trace'] = $exception->getTrace();
-
-            $content = json_encode($content, $response->getEncodingOptions());
-            assert(false !== $content);
-            $response->setContent($content);
-        }
-
         $event->setResponse($response);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Network\Story\Infrastructure\Persistence\DataQuery;
 
 use App\Network\Story\Application\FindStoryById\DataQuery\StoryByIdDataQueryInterface;
+use App\Shared\Infrastructure\Persistence\DataQuery\DataQueryBuilder;
 use Doctrine\ORM\EntityManagerInterface;
 
 final readonly class StoryByIdDataQuery implements StoryByIdDataQueryInterface
@@ -15,10 +16,11 @@ final readonly class StoryByIdDataQuery implements StoryByIdDataQueryInterface
     {
         $sql = "SELECT uuid as id, title, description FROM network_story where uuid = :id";
 
-        $stmt = $this->manager->getConnection()->prepare($sql);
-        $stmt->bindValue('id', $id);
-        $result = $stmt->executeQuery()->fetchAssociative();
-        assert(false !== $result);
-        return $result;
+        return
+            DataQueryBuilder::create($this->manager)
+                ->prepare($sql)
+                ->bindValue('id', $id)
+                ->getSingleResult()
+            ;
     }
 }

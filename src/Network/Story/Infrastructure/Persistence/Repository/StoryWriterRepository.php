@@ -31,7 +31,7 @@ final class StoryWriterRepository extends ServiceEntityRepository implements Sto
     {
         $entity = $this->find($storyId->value);
         if (null === $entity) {
-            throw StoryNotFoundException::fromId($storyId);
+            throw StoryNotFoundException::fromStoryId($storyId);
         }
         if (!$entity instanceof Story) {
             throw LogicException::create(sprintf('Null or Story expected, %s received', gettype($entity)));
