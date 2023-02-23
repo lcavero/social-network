@@ -6,6 +6,6 @@
 
 
     <embeddable name="App\Network\Story\Domain\StoryTitle">
-        <field name="value" column="title" type="string" length="15" nullable="false"/>
+        <field name="value" column="title2" type="string" length="15" nullable="false"/>
     </embeddable>
 </doctrine-mapping>

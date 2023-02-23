@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-abstract class AbstractRequestValidator
+abstract class AbstractRequestValidator implements RequestValidatorInterface
 {
     public function __construct(protected ValidatorInterface $validator)
     {

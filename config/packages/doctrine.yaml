@@ -14,7 +14,7 @@ doctrine:
             Network\Story:
                 type: xml
                 is_bundle: false
-                dir: '%kernel.project_dir%/config/doctrine/Network/Story'
+                dir: '%kernel.project_dir%/src/Network/Story/Infrastructure/Persistence/Mapping'
                 prefix: 'App\Network\Story\Domain'
                 alias: Network\Story
 
