@@ -5,6 +5,7 @@ DOCKER_COMP = docker compose
 PHP_CONT = $(DOCKER_COMP) exec php
 PHP_CONT_NO_TTY = $(DOCKER_COMP) exec -T php
 PHP_CONT_BEHAT = $(DOCKER_COMP) exec -T -e APP_ENV=test php
+PHP_CONT_PHPUNIT = $(DOCKER_COMP) exec -T -e XDEBUG_MODE=coverage php
 
 # Executables
 PHP      = $(PHP_CONT) php
@@ -62,7 +63,7 @@ cc: sf
 
 ## —— Tests 🔥 ———————————————————————————————————————————————————————————————
 run-tests: ## Run tests
-	@$(PHP_CONT_NO_TTY) bin/phpunit
+	@$(PHP_CONT_PHPUNIT) bin/phpunit --coverage-text
 
 ## —— Behat 🔥 ———————————————————————————————————————————————————————————————
 run-behat: ## Run Behat

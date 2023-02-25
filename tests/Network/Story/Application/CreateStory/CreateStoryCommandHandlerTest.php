@@ -83,7 +83,7 @@ final class CreateStoryCommandHandlerTest extends TestCase
         Mockery::close();
     }
 
-    public function createdSuccessfullyDataProvider(): array
+    protected function createdSuccessfullyDataProvider(): array
     {
         return [
             'Valid Story #1' => [
@@ -113,7 +113,7 @@ final class CreateStoryCommandHandlerTest extends TestCase
         ];
     }
 
-    public function failuresWithInvalidStoryIdDataProvider(): array
+    protected function failuresWithInvalidStoryIdDataProvider(): array
     {
         return [
             'Blank' => [
@@ -127,7 +127,7 @@ final class CreateStoryCommandHandlerTest extends TestCase
         ];
     }
 
-    public function failuresWithInvalidStoryTitleDataProvider(): array
+    protected function failuresWithInvalidStoryTitleDataProvider(): array
     {
         return [
             'Blank' => [
@@ -149,7 +149,7 @@ final class CreateStoryCommandHandlerTest extends TestCase
         ];
     }
 
-    public function failuresWithInvalidStoryDescriptionDataProvider(): array
+    protected function failuresWithInvalidStoryDescriptionDataProvider(): array
     {
         return [
             'Blank' => [

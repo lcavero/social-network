@@ -4,7 +4,7 @@ namespace App\Shared\Domain\VO\String;
 
 readonly class StringValueObject
 {
-    const MIN = 0;
+    const MIN = 1;
     const MAX = 255;
 
     const TRIM_MASK = " \t\n\r\0\x0B";

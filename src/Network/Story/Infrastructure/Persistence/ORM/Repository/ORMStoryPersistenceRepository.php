@@ -31,7 +31,7 @@ final class ORMStoryPersistenceRepository extends ServiceEntityRepository implem
     {
         $entity = $this->find($storyId->value);
         if (null === $entity) {
-            throw StoryNotFoundException::fromStoryId($storyId);
+            throw StoryNotFoundException::fromId($storyId->value);
         }
         if (!$entity instanceof Story) {
             throw LogicException::create(sprintf('Null or Story expected, %s received', gettype($entity)));
