@@ -28,7 +28,7 @@ final readonly class FindStoryByIdApiAction implements ApiController
         try {
             $result = $this->bus->handle(FindStoryByIdQuery::create($storyId));
             assert( $result instanceof FindStoryByIdResult);
-            return ApiFindResponse::create($result->render());
+            return ApiFindResponse::create($result->toArray());
         } catch (StoryNotFoundException $e) {
             throw new NotFoundHttpException(sprintf('Story with id "%s" was not found', $storyId), $e);
         }

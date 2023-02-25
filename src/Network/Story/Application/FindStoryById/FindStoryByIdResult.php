@@ -17,7 +17,7 @@ final readonly class FindStoryByIdResult
         );
     }
 
-    public function render(): array
+    public function toArray(): array
     {
         return [
             'id' => $this->id,
