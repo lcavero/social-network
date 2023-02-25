@@ -23,6 +23,17 @@ As you already know, although there are usually some common lines, each person h
 
 For this reason, and as this is more than anything a project on a personal level, a sample of my knowledge in the sector, I will try to summarize in this file the motivations behind the development strategies that I have used.
 
+## Quality tools
+
+In order to maintain a quality code, through git hooks, I have applied restrictions for:
+
+    - Not being able to commit if PHPStan encounters a problem.
+    - Not being able to push if the tests don't pass.
+
+## CI
+
+Thanks to the help of Github Ci, after every push to the repository, the application is built and tested.
+
 ## Testing
 
 As Alistair Cockburn said: 
