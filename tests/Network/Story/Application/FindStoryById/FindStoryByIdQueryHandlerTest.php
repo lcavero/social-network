@@ -53,4 +53,10 @@ final class FindStoryByIdQueryHandlerTest extends TestCase
         self::assertInstanceOf(FindStoryByIdResult::class, $result);
         self::assertSame($result->toArray(), $expectedResult);
     }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        \Mockery::close();
+    }
 }
