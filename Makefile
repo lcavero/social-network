@@ -4,6 +4,7 @@ DOCKER_COMP = docker compose
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php
 PHP_CONT_NO_TTY = $(DOCKER_COMP) exec -T php
+PHP_CONT_BEHAT = $(DOCKER_COMP) exec -T -e APP_ENV=test php
 
 # Executables
 PHP      = $(PHP_CONT) php
@@ -61,7 +62,11 @@ cc: sf
 
 ## —— Tests 🔥 ———————————————————————————————————————————————————————————————
 run-tests: ## Run tests
-	@$(PHP_CONT_NO_TTY) php bin/phpunit
+	@$(PHP_CONT_NO_TTY) bin/phpunit
+
+## —— Behat 🔥 ———————————————————————————————————————————————————————————————
+run-behat: ## Run Behat
+	@$(PHP_CONT_BEHAT) vendor/bin/behat
 
 phpstan: ## Run PhpStan
 	@$(PHP_CONT_NO_TTY) vendor/phpstan/phpstan/phpstan analyse -c develop/phpstan.neon

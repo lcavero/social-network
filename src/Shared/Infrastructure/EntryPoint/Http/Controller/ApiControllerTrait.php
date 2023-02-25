@@ -3,12 +3,12 @@
 namespace App\Shared\Infrastructure\EntryPoint\Http\Controller;
 
 use App\Shared\Infrastructure\EntryPoint\Http\Exception\BadRequestHttpException;
-use App\Shared\Infrastructure\EntryPoint\Http\Request\RequestValidatorInterface;
+use App\Shared\Infrastructure\EntryPoint\Http\Request\RequestValidator;
 use Symfony\Component\HttpFoundation\Request;
 
 trait ApiControllerTrait
 {
-    private function validateRequest(Request $request, RequestValidatorInterface $validator): void
+    private function validateRequest(Request $request, RequestValidator $validator): void
     {
         $errors = $validator->validate($request);
 

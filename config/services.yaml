@@ -7,13 +7,16 @@ parameters:
 
 services:
     _instanceof:
-        App\Shared\Infrastructure\EntryPoint\Http\Controller\ControllerInterface:
-            tags: ['controller.service_arguments']
+        App\Shared\Domain\EntryPoint\Api\ApiController:
+            tags: [ 'controller.service_arguments' ]
+        
+        App\Shared\Domain\EntryPoint\Gui\GuiController:
+            tags: [ 'controller.service_arguments' ]
             
-        App\Shared\Domain\Bus\Command\CommandHandlerInterface:
-            tags: [messenger.message_handler]
+        App\Shared\Domain\Bus\Command\CommandHandler:
+            tags: [ messenger.message_handler ]
             
-        App\Shared\Domain\Bus\Query\QueryHandlerInterface:
+        App\Shared\Domain\Bus\Query\QueryHandler:
             tags: [ messenger.message_handler ]
             
     # default configuration for services in *this* file

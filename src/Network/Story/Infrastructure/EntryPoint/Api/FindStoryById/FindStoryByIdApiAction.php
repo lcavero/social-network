@@ -5,20 +5,19 @@ namespace App\Network\Story\Infrastructure\EntryPoint\Api\FindStoryById;
 use App\Network\Story\Application\FindStoryById\FindStoryByIdQuery;
 use App\Network\Story\Application\FindStoryById\FindStoryByIdResult;
 use App\Network\Story\Domain\Exception\StoryNotFoundException;
-use App\Shared\Domain\Bus\Query\QueryBusInterface;
+use App\Shared\Domain\Bus\Query\QueryBus;
+use App\Shared\Domain\EntryPoint\Api\ApiController;
 use App\Shared\Infrastructure\EntryPoint\Http\Controller\ApiControllerTrait;
-use App\Shared\Infrastructure\EntryPoint\Http\Controller\ControllerInterface;
-use App\Shared\Infrastructure\EntryPoint\Http\Exception\BadRequestHttpException;
 use App\Shared\Infrastructure\EntryPoint\Http\Response\ApiFindResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-final readonly class FindStoryByIdApiAction implements ControllerInterface
+final readonly class FindStoryByIdApiAction implements ApiController
 {
     use ApiControllerTrait;
 
-    public function __construct(private QueryBusInterface $bus, private FindStoryByIdApiRequestValidator $requestValidator)
+    public function __construct(private QueryBus $bus, private FindStoryByIdApiRequestValidator $requestValidator)
     {
     }
 

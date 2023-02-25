@@ -2,16 +2,16 @@
 
 namespace App\Network\Story\Application\CreateStory;
 
-use App\Network\Story\Domain\Repository\StoryWriterRepositoryInterface;
+use App\Network\Story\Domain\Persistence\StoryPersistenceRepository;
 use App\Network\Story\Domain\Story;
 use App\Network\Story\Domain\StoryDescription;
 use App\Network\Story\Domain\StoryId;
 use App\Network\Story\Domain\StoryTitle;
-use App\Shared\Domain\Bus\Command\CommandHandlerInterface;
+use App\Shared\Domain\Bus\Command\CommandHandler;
 
-final readonly class CreateStoryCommandHandler implements CommandHandlerInterface
+final readonly class CreateStoryCommandHandler implements CommandHandler
 {
-    public function __construct(private StoryWriterRepositoryInterface $storyWriterRepository)
+    public function __construct(private StoryPersistenceRepository $storyWriterRepository)
     {
     }
 

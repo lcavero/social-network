@@ -2,13 +2,13 @@
 
 namespace App\Network\Story\Application\FindStoryById;
 
-use App\Network\Story\Application\FindStoryById\DataQuery\StoryByIdDataQueryInterface;
+use App\Network\Story\Domain\Search\StoryByIdSearcher;
 use App\Network\Story\Domain\Exception\StoryNotFoundException;
-use App\Shared\Domain\Bus\Query\QueryHandlerInterface;
+use App\Shared\Domain\Bus\Query\QueryHandler;
 
-final readonly class FindStoryByIdQueryHandler implements QueryHandlerInterface
+final readonly class FindStoryByIdQueryHandler implements QueryHandler
 {
-    public function __construct(private StoryByIdDataQueryInterface $storyByIdDataQuery)
+    public function __construct(private StoryByIdSearcher $storyByIdDataQuery)
     {
     }
 

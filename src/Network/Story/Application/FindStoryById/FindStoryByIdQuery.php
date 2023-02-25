@@ -2,9 +2,9 @@
 
 namespace App\Network\Story\Application\FindStoryById;
 
-use App\Shared\Domain\Bus\Query\QueryInterface;
+use App\Shared\Domain\Bus\Query\Query;
 
-final readonly class FindStoryByIdQuery implements QueryInterface
+final readonly class FindStoryByIdQuery implements Query
 {
     private function __construct(public string $id)
     {

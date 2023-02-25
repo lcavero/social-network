@@ -3,14 +3,14 @@
 namespace App\Network\Story\Infrastructure\EntryPoint\Cli\FindStory;
 
 use App\Network\Story\Application\FindStoryById\FindStoryByIdQuery;
-use App\Shared\Domain\Bus\Query\QueryBusInterface;
+use App\Shared\Domain\Bus\Query\QueryBus;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 final class FindStoryCommand extends Command
 {
-    public function __construct(private readonly QueryBusInterface $bus)
+    public function __construct(private readonly QueryBus $bus)
     {
         parent::__construct();
     }

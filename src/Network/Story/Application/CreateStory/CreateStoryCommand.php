@@ -2,9 +2,9 @@
 
 namespace App\Network\Story\Application\CreateStory;
 
-use App\Shared\Domain\Bus\Command\CommandInterface;
+use App\Shared\Domain\Bus\Command\Command;
 
-final readonly class CreateStoryCommand implements CommandInterface
+final readonly class CreateStoryCommand implements Command
 {
     private function __construct(public string $id, public string $title, public string $description)
     {
