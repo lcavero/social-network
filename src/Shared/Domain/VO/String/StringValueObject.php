@@ -7,7 +7,7 @@ readonly class StringValueObject
     const MIN = 0;
     const MAX = 255;
 
-    const TRIM_MASK = ' \t\n\r\0\x0B';
+    const TRIM_MASK = " \t\n\r\0\x0B";
 
     protected function __construct(public string $value)
     {

@@ -7,5 +7,5 @@ use App\Shared\Domain\VO\String\StringValueObject;
 final readonly class StoryDescription extends StringValueObject
 {
     const MIN = 10;
-    const MAX = 40;
+    const MAX = 140;
 }
