@@ -14,6 +14,16 @@ Created from [Symfony Docker](https://github.com/dunglas/symfony-docker) project
 4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
 5. Run `docker compose down --remove-orphans` to stop the Docker containers.
 
+## Makefile
+
+You can use make commands included in Makefile to run common actions like:
+
+- Up containers: make up
+- Down containers: make down
+- Enter in php container: make sh
+- Run PHPUnit tests: make run-tests
+- Run Behat tests: make run-behat
+- Run PhpStan: make phpstan
 
 ## Abstract
 
@@ -27,8 +37,8 @@ For this reason, and as this is more than anything a project on a personal level
 
 In order to maintain a quality code, through git hooks, I have applied restrictions for:
 
-    - Not being able to commit if PHPStan encounters a problem.
-    - Not being able to push if the tests don't pass.
+- Not being able to commit if [PhpStan](https://phpstan.org/) encounters a problem.
+- Not being able to push if the tests don't pass.
 
 ## CI
 
@@ -38,10 +48,14 @@ Thanks to the help of Github Ci, after every push to the repository, the applica
 
 As Alistair Cockburn said: 
 
-> Allow an application to equally be driven by users, programs, automated test or batch scripts, and to be developed and tested in isolation from its eventual run-time devices and databases.[1]
+> Allow an application to equally be driven by users, programs, automated test or batch scripts, and to be developed and tested in isolation from its eventual run-time devices and databases. [1]
 
 In fact, one of the motivations for the hexagonal architecture is precisely to be able to automate tests without relying on user interaction or external services that may not be available.
-Following that logic, I should limit my tests to the Domain and Application layers. However, an important part is the API entry points, they have controllers with validations, role-based security, and responses. I wouldn't want to leave that untested. So I have been encouraged to use [Behat](https://docs.behat.org/en/latest/) for these cases.
+Following that logic, I should limit my tests to the Domain and Application layers. However, an important part is the API entry points, they have controllers with validations, role-based security, and responses. I wouldn't want to leave that untested. 
+
+So I have decided to use:
+- [PHPUnit](https://phpunit.de/) for testing Domain and Application layer.
+- [Behat](https://docs.behat.org/en/latest/) for testing Api Controllers.
 
 
 
