@@ -9,8 +9,6 @@ use App\Shared\Infrastructure\EntryPoint\Http\Controller\ApiControllerTrait;
 use App\Shared\Infrastructure\EntryPoint\Http\Response\ApiCreatedResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use OpenApi\Attributes as OA;
-use Nelmio\ApiDocBundle\Annotation\Model;
 
 final readonly class CreateStoryApiAction implements ApiController
 {
@@ -20,17 +18,6 @@ final readonly class CreateStoryApiAction implements ApiController
     {
     }
 
-    #[OA\Response(
-        response: 201,
-        description: 'Successful response',
-        content: new OA\JsonContent(
-            properties: [
-                new OA\Property(property: 'status', type: 'integer', example: 201),
-                new OA\Property(property: 'message', type: 'string', example: 'ok')
-            ],
-            type: 'object'
-        )
-    )]
     public function __invoke(Request $request): JsonResponse
     {
         $this->validateRequest($request, $this->requestValidator);
@@ -42,6 +29,7 @@ final readonly class CreateStoryApiAction implements ApiController
             $body['title'],
             $body['description']
         ));
-        return ApiCreatedResponse::create();
+
+        return $this->jsonResponse(ApiCreatedResponse::create());
     }
 }

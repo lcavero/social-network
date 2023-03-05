@@ -6,12 +6,14 @@ use App\Shared\Infrastructure\EntryPoint\EntryPoint;
 use App\Shared\Infrastructure\EntryPoint\Http\Exception\BadRequestHttpException;
 use App\Shared\Infrastructure\EntryPoint\Http\Request\RequestEntrypointResolver;
 use App\Shared\Infrastructure\EntryPoint\Http\Response\ApiErrorResponse;
+use App\Shared\Infrastructure\EntryPoint\Http\Response\ApiErrorResponseFactory;
+use App\Shared\Infrastructure\EntryPoint\Http\Response\ApiJsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 final readonly class ApiExceptionListener
 {
-    public function __construct(private RequestEntrypointResolver $requestEntrypointResolver, private bool $debug)
+    public function __construct(private bool $debug, private RequestEntrypointResolver $requestEntrypointResolver)
     {
     }
 
@@ -34,6 +36,6 @@ final readonly class ApiExceptionListener
         } else {
             $response = ApiErrorResponse::create();
         }
-        $event->setResponse($response);
+        $event->setResponse(ApiJsonResponse::fromApiResponse($response));
     }
 }

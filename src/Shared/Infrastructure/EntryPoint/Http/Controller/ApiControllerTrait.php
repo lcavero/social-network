@@ -4,6 +4,9 @@ namespace App\Shared\Infrastructure\EntryPoint\Http\Controller;
 
 use App\Shared\Infrastructure\EntryPoint\Http\Exception\BadRequestHttpException;
 use App\Shared\Infrastructure\EntryPoint\Http\Request\RequestValidator;
+use App\Shared\Infrastructure\EntryPoint\Http\Response\ApiJsonResponse;
+use App\Shared\Infrastructure\EntryPoint\Http\Response\ApiResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 trait ApiControllerTrait
@@ -15,5 +18,18 @@ trait ApiControllerTrait
         if ($errors->count() > 0) {
             throw BadRequestHttpException::fromConstraintViolationList($errors);
         }
+    }
+
+    private function jsonResponse(ApiResponse $apiJsonResponse): JsonResponse
+    {
+        return ApiJsonResponse::fromApiResponse($apiJsonResponse);
+    }
+
+    private function requestPagination(Request $request): PaginationMapper
+    {
+        return PaginationMapper::map(
+            null !== $request->query->get('page') ? (int) $request->query->get('page') : null,
+            null !== $request->query->get('per_page') ? (int) $request->query->get('per_page') : null,
+        );
     }
 }

@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 abstract class AbstractRequestValidator implements RequestValidator
 {
@@ -36,5 +37,28 @@ abstract class AbstractRequestValidator implements RequestValidator
         }
         $errors->addAll($this->validator->validate($request->attributes->get('_route_params'), $this->routeParamConstraints()));
         return $errors;
+    }
+
+    protected function addPaginationConstraints(Collection $collection): Collection
+    {
+        return new Collection([
+            'fields' => [
+                ...[
+                    'page' => new Assert\Optional(
+                        new Assert\Sequentially([
+                            new Assert\Type('integer'),
+                            new Assert\Positive()
+                        ]),
+                    ),
+                    'per_page' => new Assert\Optional(
+                        new Assert\Sequentially([
+                            new Assert\Type('integer'),
+                            new Assert\Positive()
+                        ]),
+                    ),
+                ],
+                ...$collection->fields
+            ]
+        ]);
     }
 }

@@ -1,2 +1,5 @@
 app:
     resource: ../../src/Shared/Infrastructure/EntryPoint/Http/Routing/app.yaml
+
+api_login_check:
+    path: /api/login_check

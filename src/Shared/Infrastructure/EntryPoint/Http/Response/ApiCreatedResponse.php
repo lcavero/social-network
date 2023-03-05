@@ -2,13 +2,45 @@
 
 namespace App\Shared\Infrastructure\EntryPoint\Http\Response;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-final class ApiCreatedResponse extends JsonResponse
+final readonly class ApiCreatedResponse implements ApiResponse
 {
-    public static function create(): self
+    private function __construct(public array $metadata, public array $headers)
+    {}
+
+    public static function create(array $metadata = [], array $headers = []): self
     {
-        return new self(['status' => Response::HTTP_CREATED, 'message' => 'ok'], Response::HTTP_CREATED);
+        return new self($metadata, $headers);
+    }
+
+    public function status(): int
+    {
+        return Response::HTTP_CREATED;
+    }
+
+    public function message(): string
+    {
+        return 'ok';
+    }
+
+    public function headers(): array
+    {
+        return $this->headers;
+    }
+
+    public function metadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function data(): null
+    {
+        return null;
+    }
+
+    public function errors(): array
+    {
+        return [];
     }
 }

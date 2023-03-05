@@ -1,4 +1,10 @@
 nelmio_api_doc:
+    areas: # to filter documented areas
+        default:
+            path_patterns: [ /api/doc.json ]
+        network:
+            path_patterns: [ ^/api/network ]
+            
     documentation:
         servers:
             - url: https://localhost
@@ -7,6 +13,12 @@ nelmio_api_doc:
             title: Social Network
             description: A project based on DDD, CQRS, and HA made with Symfony web framework.
             version: 1.0.0
-    areas: # to filter documented areas
-        path_patterns:
-            - ^/api(?!/doc$)(?!/doc.json$)  # Accepts routes under /api except /api/doc
+            
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            -   Bearer: [ ]

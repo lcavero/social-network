@@ -2,13 +2,45 @@
 
 namespace App\Shared\Infrastructure\EntryPoint\Http\Response;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-final class ApiFindResponse extends JsonResponse
+final readonly class ApiFindResponse implements ApiResponse
 {
-    public static function create(array $data): self
+    private function __construct(public mixed $data, public array $metadata, public array $headers)
+    {}
+
+    public static function create(mixed $data = null, array $metadata = [], array $headers = []): self
     {
-        return new self(['status' => Response::HTTP_OK, 'message' => 'ok', 'data' => $data], Response::HTTP_OK);
+        return new self($data, $metadata, $headers);
+    }
+
+    public function status(): int
+    {
+        return Response::HTTP_OK;
+    }
+
+    public function message(): string
+    {
+        return 'ok';
+    }
+
+    public function headers(): array
+    {
+        return $this->headers;
+    }
+
+    public function metadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function data(): mixed
+    {
+        return $this->data;
+    }
+
+    public function errors(): array
+    {
+        return [];
     }
 }

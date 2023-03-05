@@ -1,11 +1,16 @@
-create_story:
+find_stories:
     path: /
-    controller: App\Network\Story\Infrastructure\EntryPoint\Api\CreateStory\CreateStoryApiAction
-    methods: [POST]
-
+    controller: App\Network\Story\Infrastructure\EntryPoint\Api\FindStories\FindStoriesApiAction
+    methods: [GET]
+        
 find_story_by_id:
     path: /{storyId}
     controller: App\Network\Story\Infrastructure\EntryPoint\Api\FindStoryById\FindStoryByIdApiAction
     methods: [GET]
     requirements:
         storyId: '[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}'
+        
+create_story:
+    path: /
+    controller: App\Network\Story\Infrastructure\EntryPoint\Api\CreateStory\CreateStoryApiAction
+    methods: [POST]

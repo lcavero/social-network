@@ -8,6 +8,7 @@ use App\Network\Story\Application\FindStoryById\FindStoryByIdResult;
 use App\Network\Story\Domain\Exception\StoryNotFoundException;
 use App\Network\Story\Domain\Search\StoryByIdSearcher;
 use PHPUnit\Framework\TestCase;
+use function PHPUnit\Framework\assertNull;
 
 final class FindStoryByIdQueryHandlerTest extends TestCase
 {
@@ -24,8 +25,7 @@ final class FindStoryByIdQueryHandlerTest extends TestCase
         ;
         $queryHandler = new FindStoryByIdQueryHandler($storyByIdSearcherMock);
 
-        $this->expectException(StoryNotFoundException::class);
-        ($queryHandler)($query);
+        assertNull(($queryHandler)($query));
     }
 
     public function testStoryFound(): void
@@ -51,7 +51,9 @@ final class FindStoryByIdQueryHandlerTest extends TestCase
         $result = ($queryHandler)($query);
 
         self::assertInstanceOf(FindStoryByIdResult::class, $result);
-        self::assertSame($result->toArray(), $expectedResult);
+        self::assertSame($result->id, $expectedResult['id']);
+        self::assertSame($result->title, $expectedResult['title']);
+        self::assertSame($result->description, $expectedResult['description']);
     }
 
     protected function tearDown(): void
